@@ -23,11 +23,11 @@ class Cell
     if @ship != nil
       ship.hit
     end
+
     @fired_upon = true
   end
 
   def fired_upon?
     return @fired_upon
-
-    end
   end
+end
