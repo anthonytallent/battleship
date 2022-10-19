@@ -26,4 +26,12 @@ RSpec.describe Ship do
       expect(cruiser.health).to eq(3)
     end
   end
+
+  describe '#sunk method?' do
+    it 'will return false if it still has health' do
+    cruiser = Ship.new("Cruiser", 3)
+
+    expect(cruiser.sunk?).to eq(false)
+    end
+  end
 end
