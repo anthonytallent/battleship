@@ -34,4 +34,16 @@ RSpec.describe Cell do
       expect(cell.ship).to eq(cruiser)
     end
   end
+
+  describe '#fired_upon? method' do
+    it 'will tell you false if the cell is not fired on yet' do
+      cruiser = Ship.new("Cruiser", 3)
+
+      cell = Cell.new("B4")
+
+      cell.place_ship(cruiser)
+      cell.fired_upon?
+      expect(cell.fired_upon?).to eq(false)
+    end
+  end
 end
