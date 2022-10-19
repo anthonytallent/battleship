@@ -1,4 +1,5 @@
 require './lib/cell'
+require './lib/ship'
 
 RSpec.describe Cell do
   describe '#Cell class' do
@@ -19,6 +20,18 @@ RSpec.describe Cell do
       cell = Cell.new("B4")
 
       expect(cell.ship).to eq(nil)
+    end
+  end
+
+  describe '#place_ship method' do
+    it 'will place a ship in a cell' do
+      cruiser = Ship.new("Cruiser", 3)
+
+      cell = Cell.new("B4")
+
+      cell.place_ship(cruiser)
+
+      expect(cell.ship).to eq(cruiser)
     end
   end
 end

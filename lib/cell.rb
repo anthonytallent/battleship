@@ -6,5 +6,9 @@ class Cell
     @ship = nil
   end
 
-
+  def place_ship(ship)
+    if @ship == nil
+      @ship = ship
+    end
+  end
 end
