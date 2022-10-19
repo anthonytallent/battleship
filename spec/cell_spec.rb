@@ -34,4 +34,17 @@ RSpec.describe Cell do
       expect(cell.ship).to eq(cruiser)
     end
   end
+
+  describe '#fire_upon method' do
+    it 'will fire upon an existing cell' do
+      cruiser = Ship.new("Cruiser", 3)
+
+      cell = Cell.new("B4")
+
+      cell.place_ship(cruiser)
+      cell.fire_upon
+require 'pry' ; binding.pry
+      expect(cell.ship.health).to eq(2)
+    end
+  end
 end
