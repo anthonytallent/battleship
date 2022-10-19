@@ -30,4 +30,19 @@ class Cell
   def fired_upon?
     return @fired_upon
   end
+
+  def render(optional_arg = false)
+    if @ship && @ship.sunk?
+      "X"
+    elsif optional_arg && @ship
+      "S"
+    elsif @fired_upon && @ship
+      "H"
+    elsif @fired_upon && !@ship
+      "M"
+    else
+      "."
+    end
+  end
+
 end
