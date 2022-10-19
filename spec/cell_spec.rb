@@ -43,7 +43,7 @@ RSpec.describe Cell do
 
       cell.place_ship(cruiser)
       cell.fire_upon
-require 'pry' ; binding.pry
+      
       expect(cell.ship.health).to eq(2)
     end
   end
