@@ -1,3 +1,5 @@
+require './lib/ship'
+
 class Cell
   attr_reader :coordinate, :ship
 
@@ -15,5 +17,10 @@ class Cell
   def empty?
     @ship.nil?
   end
-
+  
+  def fire_upon
+    if @ship != nil
+      ship.hit
+    end
+  end
 end
