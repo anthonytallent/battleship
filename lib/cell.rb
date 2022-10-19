@@ -11,4 +11,9 @@ class Cell
       @ship = ship
     end
   end
+
+  def empty?
+    @ship.nil?
+  end
+
 end
