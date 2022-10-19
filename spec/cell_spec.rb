@@ -30,7 +30,7 @@ RSpec.describe Cell do
       cell = Cell.new("B4")
 
       cell.place_ship(cruiser)
-
+require 'pry' ; binding.pry
       expect(cell.ship).to eq(cruiser)
     end
   end
