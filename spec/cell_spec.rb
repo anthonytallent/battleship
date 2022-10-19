@@ -68,4 +68,27 @@ RSpec.describe Cell do
       expect(cell.ship.health).to eq(2)
     end
   end
+
+  describe '#fired_upon method' do
+    it 'will return false if it has not been fired upon' do
+        cruiser = Ship.new("Cruiser", 3)
+
+        cell = Cell.new("B4")
+
+        cell.place_ship(cruiser)
+
+        expect(cell.fired_upon?).to eq(false)
+    end
+
+    it 'will return true if it has been fired upon' do
+      cruiser = Ship.new("Cruiser", 3)
+
+      cell = Cell.new("B4")
+
+      cell.place_ship(cruiser)
+      cell.fire_upon
+
+      expect(cell.fired_upon?).to eq(true)
+    end
+  end
 end

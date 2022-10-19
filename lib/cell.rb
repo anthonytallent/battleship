@@ -23,4 +23,9 @@ class Cell
       ship.hit
     end
   end
+
+  def fired_upon?
+    fire_upon == true
+    
+  end
 end
