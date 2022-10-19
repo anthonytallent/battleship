@@ -30,20 +30,42 @@ RSpec.describe Cell do
       cell = Cell.new("B4")
 
       cell.place_ship(cruiser)
-require 'pry' ; binding.pry
+
       expect(cell.ship).to eq(cruiser)
     end
   end
 
-  describe '#fired_upon? method' do
-    it 'will tell you false if the cell is not fired on yet' do
+  describe '#empty? method' do
+    it 'returns true if cell does not have a ship in it' do
+      cruiser = Ship.new("Cruiser", 3)
+
+      cell = Cell.new("B4")
+
+      expect(cell.empty?).to eq(true)
+    end
+
+
+    it 'returns false if cell has a ship in it' do
       cruiser = Ship.new("Cruiser", 3)
 
       cell = Cell.new("B4")
 
       cell.place_ship(cruiser)
-      cell.fired_upon?
-      expect(cell.fired_upon?).to eq(false)
+
+      expect(cell.empty?).to eq(false)
+    end
+  end
+
+    describe '#fire_upon method' do
+    it 'will fire upon an existing cell' do
+      cruiser = Ship.new("Cruiser", 3)
+
+      cell = Cell.new("B4")
+
+      cell.place_ship(cruiser)
+      cell.fire_upon
+
+      expect(cell.ship.health).to eq(2)
     end
   end
 end
