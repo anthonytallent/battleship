@@ -34,4 +34,25 @@ RSpec.describe Cell do
       expect(cell.ship).to eq(cruiser)
     end
   end
+
+  describe '#empty? method' do
+    it 'returns true if cell does not have a ship in it' do
+      cruiser = Ship.new("Cruiser", 3)
+
+      cell = Cell.new("B4")
+
+      expect(cell.empty?).to eq(true)
+    end
+
+
+    it 'returns false if cell has a ship in it' do
+      cruiser = Ship.new("Cruiser", 3)
+
+      cell = Cell.new("B4")
+
+      cell.place_ship(cruiser)
+
+      expect(cell.empty?).to eq(false)
+    end
+  end
 end
