@@ -14,6 +14,10 @@ class Cell
     end
   end
 
+  def empty?
+    @ship.nil?
+  end
+  
   def fire_upon
     if @ship != nil
       ship.hit

@@ -35,7 +35,28 @@ RSpec.describe Cell do
     end
   end
 
-  describe '#fire_upon method' do
+  describe '#empty? method' do
+    it 'returns true if cell does not have a ship in it' do
+      cruiser = Ship.new("Cruiser", 3)
+
+      cell = Cell.new("B4")
+
+      expect(cell.empty?).to eq(true)
+    end
+
+
+    it 'returns false if cell has a ship in it' do
+      cruiser = Ship.new("Cruiser", 3)
+
+      cell = Cell.new("B4")
+
+      cell.place_ship(cruiser)
+
+      expect(cell.empty?).to eq(false)
+    end
+  end
+  
+    describe '#fire_upon method' do
     it 'will fire upon an existing cell' do
       cruiser = Ship.new("Cruiser", 3)
 
