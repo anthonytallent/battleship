@@ -32,5 +32,14 @@ RSpec.describe Board do
     end
   end
 
+  describe '#valid_placement?' do
+    it 'will return false if the placement is invalid' do
+      board = Board.new
 
+      cruiser = Ship.new("Cruiser", 3)
+      submarine = Ship.new("Submarine", 2)
+
+      expect (board.valid_placement?(cruiser, ["A1", "A2"])).to eq(false)
+    end
+  end
 end
