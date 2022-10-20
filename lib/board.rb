@@ -26,6 +26,24 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
+    split_variables = coordinates.map do |coordinate|
+      coordinate.split("")
+
+      numbers = split_variables.map do |coord|
+        coord.last
+      end
+      
+      letters = split_variables.map do |coord|
+        coord.first
+      end
+    # split_coordinates = []
+    # coordinates.each do |coordinate|
+    #   split_coordinates << coordinate.split('coordinate')
+
+    # numbers = []
+    # letters = []
+    # split_coordinates.each do |coordinate|
+    end
     if ship.length == coordinates.count
       true
     else false
