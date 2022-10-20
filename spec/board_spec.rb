@@ -32,6 +32,24 @@ RSpec.describe Board do
     end
   end
 
+  describe '#valid_coordinate? method' do
+    it 'returns true if coordinate is valid' do
+      board = Board.new
+
+      expect(board.valid_coordinate?("A1")).to eq(true)
+      expect(board.valid_coordinate?("D4")).to eq(true)
+
+    end
+
+    it 'returns false if coordinate is invalid' do
+      board = Board.new
+
+      expect(board.valid_coordinate?("A5")).to eq(false)
+      expect(board.valid_coordinate?("E1")).to eq(false)
+      expect(board.valid_coordinate?("A22")).to eq(false)
+    end
+  end
+
   describe '#valid_placement?' do
     it 'will return false if the placement is invalid' do
       board = Board.new
