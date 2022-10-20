@@ -2,11 +2,10 @@ require './lib/ship'
 require './lib/cell'
 
 class Board
-  def initialize
-  end
+  attr_reader :cells
 
-  def cells
-    cells = {
+  def initialize
+    @cells = {
       cell_1: Cell.new("A1"),
       cell_2: Cell.new("A2"),
       cell_3: Cell.new("A3"),
