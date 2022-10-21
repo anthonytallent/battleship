@@ -4,7 +4,7 @@ require './lib/board'
 
 RSpec.describe Board do
   describe '#Board class' do
-    it 'exists' do
+    xit 'exists' do
       board = Board.new
 
       expect(board).to be_a(Board)
@@ -12,20 +12,20 @@ RSpec.describe Board do
   end
 
   describe '#cells method' do
-    it 'returns a hash' do
+    xit 'returns a hash' do
       board = Board.new
 
       expect(board.cells).to be_a(Hash)
     end
 
-    it 'has 16 key/value pairs' do
+    xit 'has 16 key/value pairs' do
       board = Board.new
 
       expect(board.cells.keys.length).to eq(16)
       expect(board.cells.values.length).to eq(16)
     end
 
-    it 'keys point to cell objects' do
+    xit 'keys point to cell objects' do
       board = Board.new
 
       expect(board.cells.values[0]).to be_a(Cell)
@@ -33,7 +33,7 @@ RSpec.describe Board do
   end
 
   describe '#valid_coordinate? method' do
-    it 'returns true if coordinate is valid' do
+    xit 'returns true if coordinate is valid' do
       board = Board.new
 
       expect(board.valid_coordinate?("A1")).to eq(true)
@@ -41,7 +41,7 @@ RSpec.describe Board do
 
     end
 
-    it 'returns false if coordinate is invalid' do
+    xit 'returns false if coordinate is invalid' do
       board = Board.new
 
       expect(board.valid_coordinate?("A5")).to eq(false)
@@ -93,7 +93,7 @@ RSpec.describe Board do
   end
   
   describe 'ship placement' do
-    xit 'returns true if ship is placed in consecutive cells' do
+    it 'returns true if ship is placed in consecutive cells' do
       board = Board.new
 
       cruiser = Ship.new("Cruiser", 3)
@@ -111,7 +111,7 @@ RSpec.describe Board do
   end
 
   describe 'overlapping ships' do
-    xit 'tests if ships overlap (occupy the same cell)' do
+    it 'tests if ships overlap (occupy the same cell)' do
       board = Board.new
 
       cruiser = Ship.new("Cruiser", 3)
