@@ -81,7 +81,7 @@ class Board
 
   def same_number(coordinates)
     coordinates.all? do |coord|
-        coordinates.first[-1] == coord[-1]
+      coordinates.first[-1] == coord[-1]
     end
   end
 
@@ -102,5 +102,9 @@ class Board
     coordinates.each do |coord|
       @cells[coord].place_ship(ship)
     end
+  end
+
+  def render(optional_arg = false) 
+    "  1 2 3 4 \nA #{@cells["A1"].render(optional_arg)} #{@cells["A2"].render(optional_arg)} #{@cells["A3"].render(optional_arg)} #{@cells["A4"].render(optional_arg)} \nB #{@cells["B1"].render(optional_arg)} #{@cells["B2"].render(optional_arg)} #{@cells["B3"].render(optional_arg)} #{@cells["B4"].render(optional_arg)} \nC #{@cells["C1"].render(optional_arg)} #{@cells["C2"].render(optional_arg)} #{@cells["C3"].render(optional_arg)} #{@cells["C4"].render(optional_arg)} \nD #{@cells["D1"].render(optional_arg)} #{@cells["D2"].render(optional_arg)} #{@cells["D3"].render(optional_arg)} #{@cells["D4"].render(optional_arg)} \n"
   end
 end
