@@ -90,4 +90,10 @@ class Board
     (consecutive_numbers(coordinates) && same_letter(coordinates) ||
     consecutive_letters(coordinates) && same_number(coordinates))
   end
+
+  def place(ship, coordinates)
+    coordinates.each do |coord|
+      @cells[coord].place_ship(ship)
+    end
+  end
 end
