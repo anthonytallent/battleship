@@ -29,4 +29,65 @@ class Board
     @cells.include?(coord)
   end
 
+  def consecutive_numbers(coordinates)
+    split_coords = coordinates.map do |coord|
+      coord.split("")
+    end
+    numbers = split_coords.map do |coord|
+      coord.last
+    end
+    if numbers.length == 3 
+      if numbers[2].to_i - numbers[0].to_i == 2 && numbers[2].to_i - numbers[1].to_i == 1
+        true
+      else 
+        false
+      end
+    elsif numbers.length == 2
+      if numbers[1].to_i - numbers[0].to_i == 1
+        true
+      else
+        false
+      end
+    end
+  end
+
+  def consecutive_letters(coordinates)
+    split_coords = coordinates.map do |coord|
+      coord.split("")
+    end
+    letters = split_coords.map do |coord|
+      coord.first
+    end
+    if letters.length == 3
+      if letters[2].ord - letters[1].ord == 1 && letters[2].ord - letters[0].ord == 2
+        true
+      else
+        false
+      end
+    elsif letters.length == 2
+      if letters[1].ord - letters[0].ord == 1
+        true
+      else
+        false
+      end
+    end
+  end
+
+  def same_letter(coordinates)
+    coordinates.all? do |coord|
+      coordinates.first[0] == coord[0]
+    end
+  end
+
+  def same_number(coordinates)
+    coordinates.all? do |coord|
+        coordinates.first[-1] == coord[-1]
+    end
+  end
+
+  def valid_placement?(ship, coordinates)
+    ship.length == coordinates.count &&
+    (consecutive_numbers(coordinates) && same_letter(coordinates) ||
+    consecutive_letters(coordinates) && same_number(coordinates))
+  end
 end
