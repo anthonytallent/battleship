@@ -85,10 +85,17 @@ class Board
     end
   end
 
+  def overlap?(coordinates)
+    coordinates.all? do |coord|
+      @cells[coord].ship.nil?
+    end
+  end
+
   def valid_placement?(ship, coordinates)
     ship.length == coordinates.count &&
     (consecutive_numbers(coordinates) && same_letter(coordinates) ||
-    consecutive_letters(coordinates) && same_number(coordinates))
+    consecutive_letters(coordinates) && same_number(coordinates)) && 
+    overlap?(coordinates)
   end
 
   def place(ship, coordinates)
