@@ -18,7 +18,7 @@ RSpec.describe do
     cruiser = Ship.new("Cruiser", 3)
     
     computer.place_cruiser(cruiser, computer.coordinates)
-
+    binding.pry
     expect(board.valid_placement?(cruiser, computer.coordinates)).to eq(true)
   end
 

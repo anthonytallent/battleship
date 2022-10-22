@@ -18,7 +18,6 @@ class Computer
   def place_cruiser(cruiser, valid_coordinates)
       until board.valid_placement?(cruiser, valid_coordinates)
           if board.valid_placement?(cruiser, valid_coordinates)
-            board.place(:cruiser, valid_coordinates)
           else valid_coordinates = []
           end
         valid_coordinates = []
@@ -27,12 +26,13 @@ class Computer
         valid_coordinates << board.cells.keys.sample
       end
     @coordinates = valid_coordinates
+    board.place(cruiser, valid_coordinates)
   end
 
   def place_submarine(submarine, valid_coordinates)
     until board.valid_placement?(submarine, valid_coordinates)
         if board.valid_placement?(submarine, valid_coordinates)
-          board.place(:submarine, valid_coordinates)
+          computer.board.place(submarine, valid_coordinates)
         else valid_coordinates = []
         end
       valid_coordinates = []
@@ -40,6 +40,7 @@ class Computer
       valid_coordinates << board.cells.keys.sample
     end
   @coordinates = valid_coordinates
+  board.place(cruiser, valid_coordinates)
 end
 end
 
