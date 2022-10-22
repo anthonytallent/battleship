@@ -42,3 +42,4 @@ class Computer
   @coordinates = valid_coordinates
 end
 end
+
