@@ -2,7 +2,6 @@ require 'pry'
 require './lib/ship'
 require './lib/cell'
 require './lib/board'
-require './lib/turn'
 
 class Computer
   attr_reader :cruiser, :submarine, :board, :coordinates
