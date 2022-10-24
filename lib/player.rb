@@ -16,9 +16,10 @@ class Player
 
   def player_place_cruiser(coordinates = [])
     if board.valid_placement?(cruiser, coordinates = [gets.chomp]) && board.valid_coordinate?(coordinates = [gets.chomp])
-      board.place(cruiser, coordinates = [gets.chomp])
+      coordinates = coordinates.to_s.split('')
+      player.board.place(cruiser, coordinates)
     else puts "Those are invalid coordinates. Please try again"
     end
-    binding.pry
+    # binding.pry
   end
 end

@@ -15,3 +15,5 @@ turn = Turn.new
 turn.intro
 
 computer.start
+
+player.player_place_cruiser
