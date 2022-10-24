@@ -48,8 +48,8 @@ class Computer
     place_submarine(submarine, coordinates)
     place_cruiser(cruiser, coordinates)
 
-    puts board.render(optional_arg = false) 
-    puts "Enter the squares for the Cruiser (3 spaces):"
+    # puts board.render(optional_arg = false) 
+    # puts "Enter the squares for the Cruiser (3 spaces):"
   end
 end
 

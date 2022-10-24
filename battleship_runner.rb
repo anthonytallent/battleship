@@ -17,3 +17,5 @@ turn.intro
 computer.start
 
 player.player_place_cruiser
+
+player.player_place_submarine
