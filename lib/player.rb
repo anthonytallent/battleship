@@ -14,12 +14,19 @@ class Player
     @board = Board.new
   end
 
-  def player_place_cruiser(coordinates = [])
-    if board.valid_placement?(cruiser, coordinates = [gets.chomp]) && board.valid_coordinate?(coordinates = [gets.chomp])
-      coordinates = coordinates.to_s.split('')
-      player.board.place(cruiser, coordinates)
-    else puts "Those are invalid coordinates. Please try again"
-    end
-    # binding.pry
+  def player_place_cruiser
+    coordinates = false
+      until coordinates == true do
+        puts "Example: A1 A2 A3"
+        puts "or: A1 B1 C1"
+        puts "no comma necessary"
+        puts ""
+        cruiser_coord = gets.chomp.split
+          if board.valid_placement?(cruiser, cruiser_coord) == true
+            @board.place(cruiser, cruiser_coord)
+            coordinates = true
+          else puts "Those are invalid coordinates. Please try again"
+          end
+      end
   end
 end
