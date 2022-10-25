@@ -6,10 +6,12 @@ require './lib/turn'
 require './lib/player'
 require './lib/game'
 
-
+# cruiser = Ship.new("Cruiser", 3)
+# submarine = Ship.new("Submarine", 2)
+# board = Board.new
 player = Player.new
 computer = Computer.new
-game = Game.new(player, computer)
+game = Game.new
 # turn = Turn.new(player, computer)
 
 game.start

@@ -7,8 +7,13 @@ require './lib/turn'
 require './lib/player'
 
 class Game
+  attr_reader :player, :computer, :computer_ships_sunk, :player_ships_sunk, :board, :cruiser, :submarine, :coordinates
 
-  def initialize(player, computer)
+  def initialize
+    @coordinates = []
+    @cruiser = Ship.new("Cruiser", 3)
+    @submarine = Ship.new("Submarine", 2)
+    @board = Board.new
     @player = Player.new
     @computer = Computer.new
     @computer_ships_sunk = 0
@@ -31,13 +36,30 @@ class Game
       start
     end
   end
-
+  # binding.pry
   def start
+    # binding.pry
     menu
+    computer.place_cruiser(cruiser, coordinates)
+    computer.place_submarine(submarine, coordinates)
     puts "I have laid out my ships on the grid." 
     puts "You now need to lay out your two ships."
     puts "The Cruiser is three units long and the Submarine is two units long."
-    place_submarine(submarine, coordinates)
-    place_cruiser(cruiser, coordinates)
+    binding.pry
+    puts player.board.render(true)
+    player.player_place_cruiser
+    puts player.board.render(true)
+    player.player_place_submarine
+    puts "====================================================="
+    play
+  end
+
+  def play
+  
+      turn = Turn.new(player, computer)
+      binding.pry
+      computer.board.keys[gets.chomp].fire_upon
+    
+
   end
 end
