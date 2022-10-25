@@ -45,7 +45,7 @@ class Game
     puts "I have laid out my ships on the grid." 
     puts "You now need to lay out your two ships."
     puts "The Cruiser is three units long and the Submarine is two units long."
-    binding.pry
+    # binding.pry
     puts player.board.render(true)
     player.player_place_cruiser
     puts player.board.render(true)
@@ -57,8 +57,8 @@ class Game
   def play
   
       turn = Turn.new(player, computer)
-      binding.pry
-      computer.board.keys[gets.chomp].fire_upon
+      # binding.pry
+      computer.board.cells[gets.chomp].fire_upon
     
 
   end
