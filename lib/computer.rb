@@ -37,7 +37,7 @@ class Computer
         valid_coordinates << board.cells.keys.sample
         @coordinates = valid_coordinates
       end
-    board.place(submarine, coordinates)
+    board.place(submarine, valid_coordinates)
   end
 
   def start
