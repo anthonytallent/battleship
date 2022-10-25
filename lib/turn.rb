@@ -1,29 +1,47 @@
 require './lib/ship'
 require './lib/cell'
 require './lib/board'
+require './lib/computer'
+require './lib/turn'
+require './lib/player'
 
 class Turn
+  attr_reader :player, :computer, :coordinates, :cruiser, :submarine, :board, :computer_ships_sunk, :player_ships_sunk
 
-  # def comp_ship_placement
-    
-  # end
-
-  def start
-   puts "I have laid out my ships on the grid." 
-   puts "You now need to lay out your two ships."
-   puts "The Cruiser is three units long and the Submarine is two units long."
-
-   render(optional_arg = false) 
-   puts "Enter the squares for the Cruiser (3 spaces):"
+  def initialize(player, computer)
+    @coordinates = []
+    @cruiser = Ship.new("Cruiser", 3)
+    @submarine = Ship.new("Submarine", 2)
+    @board = Board.new
+    @player = Player.new
+    @computer = Computer.new
+    @computer_ships_sunk = 0
+    @player_ships_sunk = 0
   end
 
-  def intro
-    puts "Welcome to battleship"
-    puts "Enter p to play. Enter q to quit"
-    if gets.chomp == p
-      start
-    elsif gets.chomp == q
-      quit
-    end
+  # def quit
+  #   abort "Abandon ship!"
+  # end
+
+  # def intro
+  #   puts "Welcome to battleship"
+  #   puts "Enter p to play. Enter q to quit"
+  #   if gets.chomp == p
+  #     computer.start
+  #   # elsif gets.chomp == q
+  #   #   turn.quit
+  #   end
+  # end
+
+  def player_turn
+    
+      puts "=============COMPUTER BOARD============="
+      puts computer.board.render(optional_arg = false)
+      puts "==============PLAYER BOARD=============="
+      puts player.board.render(true)
+      computer.board.cells[[gets.chomp]].fire_upon
+    
+
+    
   end
 end
