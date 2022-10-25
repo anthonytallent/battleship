@@ -37,8 +37,8 @@ class Player
     puts "Enter the squares for the Submarine (2 spaces):"
     coordinates = false
       until coordinates == true do
-        puts "Example: A1 A2"
-        puts "or: A1 B1"
+        puts "Example: D1 D2"
+        puts "or: C1 D1"
         puts "no comma necessary"
         puts ""
         submarine_coord = gets.chomp.split
@@ -48,5 +48,9 @@ class Player
           else puts "Those are invalid coordinates. Please try again"
           end
       end
+  end
+
+  def player_shot
+    computer.board.cells[[gets.chomp]].fire_upon
   end
 end
