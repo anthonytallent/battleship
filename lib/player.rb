@@ -48,8 +48,4 @@ class Player
           end
       end
   end
-
-  # def player_shot
-  #   computer.board.cells[[gets.chomp]].fire_upon
-  # end
 end
