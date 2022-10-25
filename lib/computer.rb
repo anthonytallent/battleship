@@ -41,15 +41,10 @@ class Computer
   end
 
   def start
-    
     puts "I have laid out my ships on the grid." 
     puts "You now need to lay out your two ships."
     puts "The Cruiser is three units long and the Submarine is two units long."
     place_submarine(submarine, coordinates)
     place_cruiser(cruiser, coordinates)
-
-    # puts board.render(optional_arg = false) 
-    # puts "Enter the squares for the Cruiser (3 spaces):"
   end
 end
-
