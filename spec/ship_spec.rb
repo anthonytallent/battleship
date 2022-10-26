@@ -27,20 +27,29 @@ RSpec.describe Ship do
     end
   end
 
-  describe '#sunk? method' do
-    it 'will return false if it still has health' do
-    cruiser = Ship.new("Cruiser", 3)
-
-    expect(cruiser.sunk?).to eq(false)
-    end
-  end
-
   describe '#hit method' do
     it 'will decrease health each time hit' do
-    cruiser = Ship.new("Cruiser", 3)
-    cruiser.hit
-    expect(cruiser.health).to eq(2)
+      cruiser = Ship.new("Cruiser", 3)
+      cruiser.hit
+
+      expect(cruiser.health).to eq(2)
     end
   end
 
+  describe '#sunk? method' do
+    it 'will return false if it still has health' do
+      cruiser = Ship.new("Cruiser", 3)
+
+      expect(cruiser.sunk?).to eq(false)
+    end
+
+    it 'will return true if it does not have health' do
+      cruiser = Ship.new("Cruiser", 3)
+      cruiser.hit
+      cruiser.hit
+      cruiser.hit
+    
+      expect(cruiser.sunk?).to eq(true)
+    end
+  end
 end
