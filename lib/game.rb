@@ -23,16 +23,27 @@ class Game
     @fired_upon_coordinates = []
   end
 
+  def render_boards
+    puts "\n\n\n=============COMPUTER BOARD============="
+    puts computer.board.render(optional_arg = false)
+    puts "==============PLAYER BOARD=============="
+    puts player.board.render(true)
+  end
+
   def player_shot
-    puts "Enter coordinate for your shot:"
+    print "\nEnter coordinate for your shot: "
     @x = gets.chomp.upcase.split[0]
     until computer.board.valid_coordinate?(@x) && !fired_upon_coordinates.include?(@x)
       if fired_upon_coordinates.include?(@x)
-        puts "You have already shot at this coordinate, don't waste a turn, Dummy!"
-        puts "Fire another shot at a valid coordinate:"
+        system("clear")
+        render_boards
+        puts "\nYou have already shot at this coordinate, don't waste a turn, Dummy!"
+        print "Fire another shot at a valid coordinate: "
       elsif !computer.board.valid_coordinate?(@x)
-        puts "You have entered an invalid coordinate. Don't waste your turn, Dummy!"
-        puts "Fire another shot at a valid coordinate:"
+        system("clear")
+        render_boards
+        puts "\nYou have entered an invalid coordinate. Don't waste your turn, Dummy!"
+        print "Fire another shot at a valid coordinate: "
       end
     @x = gets.chomp.upcase.split[0]
     end
@@ -69,18 +80,27 @@ class Game
   end
 
   def menu
-    puts "Welcome to battleship"
-    puts "Enter p to play. Enter q to quit"
+    # system("clear")
+    puts "Welcome to Battleship!"
+    print "Enter 'p' to play. Enter 'q' to quit: "
     user_input = gets.chomp.downcase
     if user_input == "p"
       puts "====================================================="
       puts "Here we go!"
+      sleep(1)
+      system("clear")
     elsif user_input == "q"
       puts "See ya!"
-    exit
-    else user_input != "p" || "q"
-      puts "Invalid input. Enter p to play or q to quit."
-      start
+      exit
+    elsif
+      while(user_input != ("p" || "q"))
+        system("clear")
+        puts "INVALID INPUT"
+        puts "\nWelcome to Battleship!"
+        print "Enter 'p' to play or 'q' to quit: "
+        user_input = gets.chomp.downcase
+        system("clear")
+      end
     end
   end
 
@@ -102,41 +122,51 @@ class Game
     computer.place_submarine(submarine, coordinates)
   
     puts "I have laid out my ships on the grid." 
-    puts "You now need to lay out your two ships."
-    puts "The Cruiser is three units long and the Submarine is two units long."
+    puts "You now need to lay out your two ships.\n\n"
+    puts "The Cruiser is three units long and the Submarine is two units long.\n\n"
  
     puts player.board.render(true)
     player.player_place_cruiser
+    system("clear")
+
+    puts "I have laid out my ships on the grid." 
+    puts "You now need to lay out your two ships.\n\n"
+    puts "The Cruiser is three units long and the Submarine is two units long.\n\n"
+
     puts player.board.render(true)
     player.player_place_submarine
     puts "====================================================="
+    system("clear")
     play
   end
 
   def play
     until @computer_ships_sunk == 2 || @player_ships_sunk == 2
-      puts "=============COMPUTER BOARD============="
+      puts "\n=============COMPUTER BOARD============="
       puts computer.board.render(optional_arg = false)
       puts "==============PLAYER BOARD=============="
       puts player.board.render(true)
       
       player_shot
       computer_shot
+      system("clear")
       results
     end
     
     if computer_ships_sunk == 2
-      puts "You won!"
+      puts "\nYou won!\n\n"
       puts "=============COMPUTER BOARD============="
       puts computer.board.render(optional_arg = false)
       puts "==============PLAYER BOARD=============="
       puts player.board.render(true)
+      puts "\n\n"
     elsif player_ships_sunk == 2
-      puts "I won!"
+      puts "\nI won!\n"
       puts "=============COMPUTER BOARD============="
       puts computer.board.render(optional_arg = false)
       puts "==============PLAYER BOARD=============="
       puts player.board.render(true)
+      puts "\n\n"
     end
 
     start
