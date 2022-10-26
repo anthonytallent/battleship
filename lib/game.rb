@@ -7,7 +7,17 @@ require './lib/turn'
 require './lib/player'
 
 class Game
-  attr_reader :player, :computer, :computer_ships_sunk, :player_ships_sunk, :board, :cruiser, :submarine, :coordinates, :x, :y, :fired_upon_coordinates
+  attr_reader :player,
+              :computer, 
+              :computer_ships_sunk, 
+              :player_ships_sunk, 
+              :board, 
+              :cruiser, 
+              :submarine, 
+              :coordinates, 
+              :player_input, 
+              :computer_coord, 
+              :fired_upon_coordinates
 
   def initialize
     @coordinates = []
@@ -18,8 +28,8 @@ class Game
     @computer = Computer.new
     @computer_ships_sunk = 0
     @player_ships_sunk = 0
-    @x
-    @y
+    @player_input
+    @computer_coord
     @fired_upon_coordinates = []
   end
 
@@ -32,50 +42,50 @@ class Game
 
   def player_shot
     print "\nEnter coordinate for your shot: "
-    @x = gets.chomp.upcase.split[0]
-    until computer.board.valid_coordinate?(@x) && !fired_upon_coordinates.include?(@x)
-      if fired_upon_coordinates.include?(@x)
+    @player_input = gets.chomp.upcase.split[0]
+    until computer.board.valid_coordinate?(@player_input) && !fired_upon_coordinates.include?(@player_input)
+      if fired_upon_coordinates.include?(@player_input)
         system("clear")
         render_boards
         puts "\nYou have already shot at this coordinate, don't waste a turn, Dummy!"
         print "Fire another shot at a valid coordinate: "
-      elsif !computer.board.valid_coordinate?(@x)
+      elsif !computer.board.valid_coordinate?(@player_input)
         system("clear")
         render_boards
         puts "\nYou have entered an invalid coordinate. Don't waste your turn, Dummy!"
         print "Fire another shot at a valid coordinate: "
       end
-    @x = gets.chomp.upcase.split[0]
+    @player_input = gets.chomp.upcase.split[0]
     end
-    computer.board.cells[@x].fire_upon
-    fired_upon_coordinates << @x
+    computer.board.cells[@player_input].fire_upon
+    fired_upon_coordinates << @player_input
   end
 
   def computer_shot
-    @y = player.board.cells.keys.sample
-    until player.board.cells[@y].fired_upon? == false
-      @y = player.board.cells.keys.sample
+    @computer_coord = player.board.cells.keys.sample
+    until player.board.cells[@computer_coord].fired_upon? == false
+      @computer_coord = player.board.cells.keys.sample
     end
-    player.board.cells[@y].fire_upon
+    player.board.cells[@computer_coord].fire_upon
   end
 
   def results
-    if computer.board.cells[@x].render == "X"
+    if computer.board.cells[@player_input].render == "X"
       @computer_ships_sunk += 1
-      puts "Your shot on #{@x} sunk a ship."
-    elsif computer.board.cells[@x].render == "H"
-      puts "Your shot on #{@x} was a hit."
-    elsif computer.board.cells[@x].render == "M"
-      puts "Your shot on #{@x} was a miss."
+      puts "Your shot on #{@player_input} sunk a ship."
+    elsif computer.board.cells[@player_input].render == "H"
+      puts "Your shot on #{@player_input} was a hit."
+    elsif computer.board.cells[@player_input].render == "M"
+      puts "Your shot on #{@player_input} was a miss."
     end
 
-    if player.board.cells[@y].render == "X"
+    if player.board.cells[@computer_coord].render == "X"
       @player_ships_sunk += 1
-      puts "My shot on #{@y} sunk a ship."
-    elsif player.board.cells[@y].render == "H"
-      puts "My shot on #{@y} was a hit."
-    elsif player.board.cells[@y].render == "M"
-      puts "My shot on #{@y} was a miss."
+      puts "My shot on #{@computer_coord} sunk a ship."
+    elsif player.board.cells[@computer_coord].render == "H"
+      puts "My shot on #{@computer_coord} was a hit."
+    elsif player.board.cells[@computer_coord].render == "M"
+      puts "My shot on #{@computer_coord} was a miss."
     end
   end
 
@@ -113,8 +123,8 @@ class Game
     @computer = Computer.new
     @computer_ships_sunk = 0
     @player_ships_sunk = 0
-    @x
-    @y
+    @player_input
+    @computer_coord
     @fired_upon_coordinates = []
 
     menu

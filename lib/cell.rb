@@ -23,13 +23,11 @@ class Cell
     if @ship != nil
       ship.hit
     end
-
     @fired_upon = true
   end
 
   def fired_upon?
-    
-    return @fired_upon
+    @fired_upon
   end
 
   def render(optional_arg = false)
@@ -45,5 +43,4 @@ class Cell
       "."
     end
   end
-
 end
