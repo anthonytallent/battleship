@@ -108,13 +108,17 @@ class Game
         puts "\nWelcome to Battleship!"
         print "Enter 'p' to play or 'q' to quit: "
         user_input = gets.chomp.downcase
+          if user_input == ("q")
+            puts "See ya!"
+            exit
+          end
         system("clear")
       end
     end
   end
 
   def start
-   initialize
+    initialize
 
     menu
     computer.place_cruiser(cruiser, coordinates)
