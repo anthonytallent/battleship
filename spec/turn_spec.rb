@@ -1,8 +1,8 @@
-require './lib/ship'
-require './lib/cell'
-require './lib/board'
-require './lib/computer'
-require './lib/turn'
+# require './lib/ship'
+# require './lib/cell'
+# require './lib/board'
+# require './lib/computer'
+# require './lib/turn'
 
 # RSpec.describe Turn do
   
@@ -20,3 +20,5 @@ require './lib/turn'
 #     end
 #   end
 # end
+
+#Turn class was buggy, put all methods in game class

@@ -28,8 +28,8 @@ class Game
     @computer = Computer.new
     @computer_ships_sunk = 0
     @player_ships_sunk = 0
-    @player_input
-    @computer_coord
+    @player_input = nil
+    @computer_coord = nil
     @fired_upon_coordinates = []
   end
 
@@ -90,7 +90,6 @@ class Game
   end
 
   def menu
-    # system("clear")
     puts "Welcome to Battleship!"
     print "Enter 'p' to play. Enter 'q' to quit: "
     user_input = gets.chomp.downcase
@@ -115,17 +114,7 @@ class Game
   end
 
   def start
-    @coordinates = []
-    @cruiser = Ship.new("Cruiser", 3)
-    @submarine = Ship.new("Submarine", 2)
-    @board = Board.new
-    @player = Player.new
-    @computer = Computer.new
-    @computer_ships_sunk = 0
-    @player_ships_sunk = 0
-    @player_input
-    @computer_coord
-    @fired_upon_coordinates = []
+   initialize
 
     menu
     computer.place_cruiser(cruiser, coordinates)

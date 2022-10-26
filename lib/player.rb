@@ -7,7 +7,6 @@ require './lib/turn'
 
 class Player
   attr_reader :cruiser, :submarine, :board
-  attr_accessor :cruiser, :submarine, :board
   
   def initialize
     @cruiser = Ship.new("Cruiser", 3)
@@ -41,7 +40,7 @@ class Player
     coordinates = false
       until coordinates == true do
         puts "\nEnter the squares for the Submarine (2 spaces)"
-        puts "Example: D1 D2 or C1 D1"
+        puts "Example: D1 D2 or C3 D3"
         print "(no comma necessary): "
 
         submarine_coord = gets.chomp.upcase.delete(",").split
