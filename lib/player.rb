@@ -8,6 +8,7 @@ require './lib/turn'
 class Player
   attr_reader :cruiser, :submarine, :board
   attr_accessor :cruiser, :submarine, :board
+  
   def initialize
     @cruiser = Ship.new("Cruiser", 3)
     @submarine = Ship.new("Submarine", 2)
@@ -22,7 +23,7 @@ class Player
         puts "or: A1 B1 C1"
         puts "no comma necessary"
         puts ""
-        cruiser_coord = gets.chomp.split
+        cruiser_coord = gets.chomp.upcase.split
           if board.valid_placement?(cruiser, cruiser_coord) == true
             @board.place(cruiser, cruiser_coord)
             coordinates = true
@@ -40,16 +41,12 @@ class Player
         puts "or: C1 D1"
         puts "no comma necessary"
         puts ""
-        submarine_coord = gets.chomp.split
+        submarine_coord = gets.chomp.upcase.split
           if board.valid_placement?(submarine, submarine_coord) == true
             @board.place(submarine, submarine_coord)
             coordinates = true
           else puts "Those are invalid coordinates. Please try again"
           end
       end
-  end
-
-  def player_shot
-    computer.board.cells[[gets.chomp]].fire_upon
   end
 end
