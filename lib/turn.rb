@@ -6,6 +6,8 @@
 # require './lib/player'
 # require './lib/game'
 
+#           Turn class was buggy, put all methods in game class
+
 # class Turn
 #   attr_reader :player, :computer, :coordinates, :cruiser, :submarine, :board, :computer_ships_sunk, :player_ships_sunk, :x, :y
 

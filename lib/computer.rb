@@ -7,14 +7,13 @@ require './lib/turn'
 require './lib/player'
 
 class Computer
-  attr_reader :cruiser, :submarine, :board
-  attr_accessor :cruiser, :submarine, :board 
+  attr_accessor :cruiser, :submarine, :board, :coordinates 
 
   def initialize
     @cruiser = Ship.new("Cruiser", 3)
     @submarine = Ship.new("Submarine", 2)
     @board = Board.new
-    # @coordinates = []
+    @coordinates = []
   end
 
   def place_cruiser(cruiser, coordinates)
