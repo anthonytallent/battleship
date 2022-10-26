@@ -23,7 +23,7 @@ class Player
         puts "or: A1 B1 C1"
         puts "no comma necessary"
         puts ""
-        cruiser_coord = gets.chomp.upcase.split
+        cruiser_coord = gets.chomp.upcase.delete(",").split
           if board.valid_placement?(cruiser, cruiser_coord) == true
             @board.place(cruiser, cruiser_coord)
             coordinates = true
@@ -33,7 +33,6 @@ class Player
   end
 
   def player_place_submarine
-    puts "Enter the squares for the Submarine (2 spaces):"
     coordinates = false
       until coordinates == true do
         puts "Enter the squares for the Submarine (2 spaces):"
@@ -41,7 +40,7 @@ class Player
         puts "or: C1 D1"
         puts "no comma necessary"
         puts ""
-        submarine_coord = gets.chomp.upcase.split
+        submarine_coord = gets.chomp.upcase.delete(",").split
           if board.valid_placement?(submarine, submarine_coord) == true
             @board.place(submarine, submarine_coord)
             coordinates = true
